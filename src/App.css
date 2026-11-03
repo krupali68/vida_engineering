@@ -1,0 +1,214 @@
+
+.header {
+  background: #102d4b;
+  color: white;
+  padding: 16px 9%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: white;
+  text-decoration: none;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.brand-icon {
+  color: #1685f8;
+  font-size: 38px;
+  font-weight: bold;
+}
+
+nav {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+nav a:hover {
+  color: #45a2ff;
+}
+
+.hero {
+  min-height: 390px;
+  display: flex;
+  align-items: center;
+  padding: 65px 9%;
+  background:
+    linear-gradient(90deg, #eaf4ff 35%, rgba(234,244,255,.75)),
+    url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600')
+    center/cover;
+}
+
+.hero-content {
+  max-width: 650px;
+}
+
+.hero h1 {
+  font-size: clamp(38px, 5vw, 64px);
+  line-height: 1.1;
+  color: #102d4b;
+  margin-bottom: 18px;
+}
+
+.hero h1 span {
+  display: block;
+  color: #0876d9;
+}
+
+.hero p {
+  font-size: 20px;
+  margin-bottom: 25px;
+}
+
+.primary-btn,
+.outline-btn {
+  display: inline-block;
+  padding: 13px 28px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.primary-btn {
+  background: #0876e8;
+  color: white;
+}
+
+.about {
+  padding: 55px 9%;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  align-items: center;
+  gap: 45px;
+}
+
+.about h2,
+.services h2,
+.contact h2 {
+  font-size: 32px;
+  color: #102d4b;
+  margin-bottom: 15px;
+}
+
+.underline {
+  width: 60px;
+  height: 3px;
+  background: #0876e8;
+  margin-bottom: 20px;
+}
+
+.about p {
+  line-height: 1.8;
+  color: #40546b;
+}
+
+.about-visual {
+  min-height: 180px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #174b79, #80b8e8);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+.about-visual strong {
+  font-size: 24px;
+}
+
+.services {
+  padding: 45px 9%;
+  background: #edf5ff;
+  text-align: center;
+}
+
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.service-card {
+  padding: 25px;
+}
+
+.service-icon {
+  font-size: 42px;
+  color: #0876e8;
+  margin-bottom: 15px;
+}
+
+.service-card h3 {
+  color: #102d4b;
+  margin-bottom: 10px;
+}
+
+.service-card p {
+  color: #40546b;
+  line-height: 1.6;
+}
+
+.contact {
+  padding: 30px 9%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.outline-btn {
+  border: 2px solid #0876e8;
+  color: #0876e8;
+}
+
+footer {
+  background: #102d4b;
+  color: white;
+  padding: 25px 9%;
+  text-align: center;
+}
+
+@media (max-width: 700px) {
+  .header {
+    flex-direction: column;
+  }
+
+  nav {
+    justify-content: center;
+    gap: 16px;
+  }
+
+  .about,
+  .service-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    padding: 65px 7%;
+  }
+
+  .contact {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
