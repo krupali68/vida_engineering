@@ -1,13 +1,31 @@
-
+import { useEffect, useState } from 'react'
 import './App.css'
+import { getHomepage } from './sanity'
 
 function App() {
+  const [homepage, setHomepage] = useState(null)
+
+  useEffect(() => {
+    getHomepage()
+      .then((data) => {
+        setHomepage(data)
+      })
+      .catch((error) => {
+        console.error('Error fetching homepage:', error)
+      })
+  }, [])
+
+  if (!homepage) {
+    return <p>Loading homepage...</p>
+  }
+
   return (
     <>
+
       <header className="header">
         <a href="#home" className="brand">
           <span className="brand-icon">V</span>
-          Vida Engineering
+          {homepage.companyName}
         </a>
 
         <nav>
@@ -21,62 +39,50 @@ function App() {
       <main>
         <section id="home" className="hero">
           <div className="hero-content">
-            <h1>Welcome to <span>Vida Engineering</span></h1>
-            <p>Engineering solutions for a better tomorrow.</p>
+            <h1>{homepage.heroHeading}</h1>
+            <p>{homepage.heroTagline}</p>
             <a href="#contact" className="primary-btn">Get in Touch →</a>
           </div>
         </section>
 
         <section id="about" className="about">
           <div>
-            <h2>About Us</h2>
+            <h2>{homepage.aboutHeading}</h2>
             <div className="underline"></div>
-            <p>
-              At Vida Engineering, we are committed to delivering
-              innovative and reliable engineering solutions.
-              Our focus is on quality, precision and long-term value.
-            </p>
+            <p>{homepage.aboutDescription}</p>
           </div>
           <div className="about-visual">
-            <span>BUILDING THE FUTURE</span>
-            <strong>VIDA ENGINEERING</strong>
+            <span>{homepage.aboutVisualTopline}</span>
+            <strong>{homepage.aboutVisualTitle}</strong>
           </div>
         </section>
 
         <section id="services" className="services">
-          <h2>Our Services</h2>
+          <h2>{homepage.servicesHeading}</h2>
           <div className="service-grid">
-            <div className="service-card">
-              <div className="service-icon">⚙</div>
-              <h3>Engineering Solutions</h3>
-              <p>Smart and efficient solutions for your projects.</p>
-            </div>
-            <div className="service-card">
-              <div className="service-icon">♙</div>
-              <h3>Expert Support</h3>
-              <p>Professional support at every step.</p>
-            </div>
-            <div className="service-card">
-              <div className="service-icon">🤝</div>
-              <h3>Reliable Partnership</h3>
-              <p>Building long-term relationships with our clients.</p>
-            </div>
+            {homepage.services?.map((service) => (
+              <div className="service-card" key={service._key}>
+                <div className="service-icon">{service.icon}</div>
+                <h3>{service.title}</h3>
+                <p>{service.description}</p>
+              </div>
+            ))}
           </div>
         </section>
 
         <section id="contact" className="contact">
           <div>
-            <h2>Contact Us</h2>
-            <p>Get in touch with our team to know more.</p>
+            <h2>{homepage.contactHeading}</h2>
+            <p>{homepage.contactDescription}</p>
           </div>
-          <a href="mailto:info@vidaengineering.com" className="outline-btn">
+          <a href={`mailto:${homepage.contactEmail}`} className="outline-btn">
             Let's Work Together →
           </a>
         </section>
       </main>
 
       <footer>
-        <p>© 2026 Vida Engineering. All rights reserved.</p>
+        <p>{homepage.footerText}</p>
       </footer>
     </>
   )
